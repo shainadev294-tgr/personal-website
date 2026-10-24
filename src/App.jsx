@@ -3,20 +3,20 @@ import './App.css'
 
 const projects = [
   {
-    title: 'AI-Powered Analytics Dashboard',
-    kind: 'Full Stack',
+    title: 'Distracted Drivers Detection System',
+    kind: 'Machine Learning',
     tags: ['React', 'TypeScript', 'Python', 'FastAPI', 'PostgreSQL', 'D3.js'],
     art: 'analytics',
   },
   {
-    title: 'Neural Network Optimization',
-    kind: 'Machine Learning',
+    title: 'Phoenix',
+    kind: 'App Development',
     tags: ['PyTorch', 'TensorFlow', 'NumPy', 'CUDA', 'OpenCV'],
     art: 'network',
   },
   {
-    title: 'Real-Time Collaboration Platform',
-    kind: 'Web Development',
+    title: 'EcoTrain AI',
+    kind: 'Full Stack',
     tags: ['Next.js', 'WebSockets', 'MongoDB', 'Redis', 'Docker'],
     art: 'code',
   },
@@ -24,29 +24,29 @@ const projects = [
 
 const jobs = [
   {
-    title: 'AI Research Intern',
-    company: 'Tech Innovation Labs',
-    date: 'May 2024',
-    end: 'Aug 2024',
-    place: 'San Francisco, CA',
+    title: 'VP of Finance',
+    company: 'AV Technology Student Assoc.',
+    date: 'Aug 2025',
+    end: 'Present',
+    place: 'Pleasanton, CA',
     description:
       'Developed machine learning models for natural language processing, conducted research on transformer architectures, and published findings in peer-reviewed journals.',
   },
   {
-    title: 'Full Stack Developer',
-    company: 'Digital Solutions Inc',
-    date: 'Aug 2023',
-    end: 'May 2024',
-    place: 'Remote',
+    title: 'Project Lead',
+    company: 'AV Girls Who Code',
+    date: 'Aug 2024',
+    end: 'Present',
+    place: 'Pleasanton, CA',
     description:
       'Built scalable web applications using React and Node.js, optimized database queries, and mentored junior developers on best practices.',
   },
   {
-    title: 'Software Engineering Intern',
-    company: 'StartupXYZ',
-    date: 'May 2023',
-    end: 'Aug 2023',
-    place: 'Palo Alto, CA',
+    title: 'Electrical Design Lead',
+    company: 'AmadorUAVs',
+    date: 'Aug 2025',
+    end: 'Present',
+    place: 'Pleasanton, CA',
     description:
       'Contributed to core product features, fixed critical bugs, and improved application performance by 40% through code optimization.',
   },
@@ -54,42 +54,55 @@ const jobs = [
 
 const awards = [
   {
-    title: 'National Science Foundation Scholar',
+    title: 'Robotics Pre-Apprenticeship',
     description:
-      'Recognized for outstanding contributions to computer science research and innovation.',
-    organization: 'National Science Foundation',
-    year: '2024',
+      'Recipient of the State of California (DAS) Robotics Pre-Apprenticeship',
+    organization: 'State of California',
+    year: '2026',
   },
   {
-    title: 'Young Innovator Award',
+    title: '1st States: Engineering Design',
     description:
-      'Awarded for developing cutting-edge solutions in artificial intelligence and machine learning.',
-    organization: 'Tech Excellence Foundation',
-    year: '2024',
+      'Placed 1st at States conference and qualified for Nationals',
+    organization: 'Technology Student Assoc.',
+    year: '2026',
   },
   {
-    title: 'Dean’s List',
+    title: '1st States: Coding',
     description:
-      'Maintained 4.0 GPA and demonstrated academic excellence across all semesters.',
-    organization: 'Amador Valley High School',
-    year: '2023',
+      'Placed 1st at States conference and qualified for Nationals',
+    organization: 'Technology Student Assoc.',
+    year: '2026',
+  },
+  {
+    title: 'Department Award for Computers',
+    description:
+      'Recongnized for excellence in computer science; 1 of 2 recipients from 372+ students',
+    organization: 'Pleasanton Middle School',
+    year: '2024',
   },
 ]
 
 const advancedPlacementCourses = [
-  'AP Computer Science',
-  'AP Calculus BC',
-  'AP Physics C',
+  'AP Environmental Science',
+  'AP World History',
+  'AP Computer Science A',
   'AP Statistics',
-  'AP Chemistry',
+  'AP Physics C: Mechanics',
+  'AP Physics C: Electricity & Magnetism',
+  'AP English Language/Composition',
+  'AP Biology',
+  'AP Calculus BC',
+  'AP US History',
 ]
 
 const relevantCoursework = [
-  'Advanced Algorithms',
-  'Data Structures',
-  'Artificial Intelligence',
-  'Web Development',
-  'Cybersecurity',
+  'Intro into Engineering & Design',
+  'Hon Principles of Engineering',
+  'Hon Computer-Integrated Manufacturing',
+  'BWSI Program Racing Drones',
+  'Inspirit AI Scholars',
+  'Girls Who Code Summer Pathways',
 ]
 
 function Icon({ name, size = 24 }) {
@@ -227,7 +240,7 @@ function HeroSection() {
   const [role, setRole] = useState('Electrical Engineer')
 
   useEffect(() => {
-    const roles = ['Electrical Engineer', 'AI Developer', 'Amador Valley High ’28']
+    const roles = ['Electrical Engineer', 'ML Researcher', 'Amador Valley High ’28']
     let roleIndex = 0
     let deleting = false
     let typed = ''
@@ -466,11 +479,11 @@ function EducationSection() {
             <div className="metrics">
               <div className="metric">
                 <span>Weighted GPA</span>
-                <strong className="blue">4.00</strong>
+                <strong className="blue">4.48</strong>
               </div>
               <div className="metric">
                 <span>Unweighted GPA</span>
-                <strong>3.95</strong>
+                <strong>3.98</strong>
               </div>
               <div className="metric wide">
                 <span>Standardized ACT Score</span>
@@ -495,9 +508,9 @@ function EducationSection() {
 const contactMethods = [
   {
     title: 'Email',
-    detail: 'shaina@example.com',
+    detail: 'shaingupta294@gmail.com',
     action: 'Send Message',
-    href: 'mailto:shaina@example.com',
+    href: 'mailto:shaingupta294@gmail.com',
     icon: 'mail',
     iconClass: 'email',
     actionClass: '',
@@ -570,7 +583,7 @@ function ContactSection() {
         ))}
       </div>
 
-      <a href="mailto:shaina@example.com" className="conversation-button">
+      <a href="mailto:shainagupta294@gmail.com" className="conversation-button">
         Start a Conversation
         <Icon name="arrow" size={20} />
       </a>
@@ -588,13 +601,13 @@ function SiteFooter() {
         <div>
           <span>Connect</span>
           <div className="footer-social">
-            <a href="https://github.com" aria-label="GitHub">
+            <a href="https://github.com/shainadev294-tgr" aria-label="GitHub">
               <Icon name="github" />
             </a>
             <a href="https://linkedin.com" aria-label="LinkedIn">
               <Icon name="linkedin" />
             </a>
-            <a href="mailto:shaina@example.com" aria-label="Email">
+            <a href="mailto:shainagupta294@gmail.com" aria-label="Email">
               <Icon name="mail" />
             </a>
           </div>

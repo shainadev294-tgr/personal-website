@@ -49,6 +49,7 @@ const jobs = [
   {
     title: 'Electrical Design Lead',
     company: 'AmadorUAVs',
+    href: 'https://amadoruavs.com/',
     date: 'Aug 2025',
     end: 'Present',
     place: 'Pleasanton, CA',
@@ -58,6 +59,7 @@ const jobs = [
   {
     title: 'VP of Finance',
     company: 'AV Technology Student Assoc.',
+    href: 'https://www.avtsa.com/',
     date: 'Aug 2025',
     end: 'Present',
     place: 'Pleasanton, CA',
@@ -67,6 +69,7 @@ const jobs = [
   {
     title: 'Project Lead',
     company: 'AV Girls Who Code',
+    href: 'https://avhsgwc.weebly.com/',
     date: 'Aug 2024',
     end: 'Present',
     place: 'Pleasanton, CA',
@@ -76,6 +79,7 @@ const jobs = [
   {
     title: 'Flagship Project Member',
     company: 'Tri-Valley Mars Society',
+    href: 'https://trivalleymarssociety.com/',
     date: 'Aug 2026',
     end: 'Present',
     place: 'Pleasanton, CA',
@@ -110,7 +114,7 @@ const awards = [
     title: 'AP Scholar',
     description:
       'Demonstrated outstanding college-level achievement through performance on multiple AP Exams.',
-    organization: 'CollegeBoard',
+    organization: 'College Board',
     year: '2026',
   },
   {
@@ -513,7 +517,12 @@ function ExperienceSection() {
               <div className="job-top">
                 <div>
                   <h3>{job.title}</h3>
-                  <a href="#contact" className="company-link">
+                  <a
+                    href={job.href}
+                    className="company-link"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     {job.company} <span>↗</span>
                   </a>
                 </div>
@@ -537,7 +546,6 @@ function ResearchCard({ art, title, role, children }) {
   return (
     <article className="research-card">
       <div className={`research-art ${art}`}>
-        <span className="year-badge">2024</span>
         <h3>{title}</h3>
       </div>
       <div className="research-copy">
@@ -569,7 +577,7 @@ function ResearchAndAwardsSection() {
         <SectionHeading icon="flask">Featured Research</SectionHeading>
         <ResearchCard
           art="chip-art"
-          title="Connectomes"
+          title="Why Message Passing Fails on Functional Connectomes: A Mechanistic Study of Node-Feature Redundancy"
           role="MODEL ARCHITECTURE LEAD"
         >
           Research on model compression techniques and quantization methods to enable
@@ -580,8 +588,7 @@ function ResearchAndAwardsSection() {
           title="Analysis of Weather on Area Vulnerability to Invasive Species"
           role="LEAD RESEARCHER"
         >
-          Investigating methods to reduce the carbon footprint of AI training and
-          inference through algorithmic innovations and hardware optimization.
+          Investigating implications of weather on area vulnerability to invasive species through computational analysis. Built custom datasets from global historical TerraClim NetCDFs and performed ablation studies utilizing random forests to determine critical tipping points based on environmental factors such as solar insolation, precipitation, vapor pressure, wind speed and temperature.
         </ResearchCard>
         <ResearchCard
           art="green-art"

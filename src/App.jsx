@@ -580,8 +580,7 @@ function ResearchAndAwardsSection() {
           title="Why Message Passing Fails on Functional Connectomes: A Mechanistic Study of Node-Feature Redundancy"
           role="MODEL ARCHITECTURE LEAD"
         >
-          Research on model compression techniques and quantization methods to enable
-          deployment of deep learning models on resource-constrained edge devices.
+          Investigates whether representation redundancy between connection-profile features and spatial message passing explains the failure of GNNs on connectomes.
         </ResearchCard>
         <ResearchCard
           art="green-art"
@@ -592,10 +591,10 @@ function ResearchAndAwardsSection() {
         </ResearchCard>
         <ResearchCard
           art="green-art"
-          title="Mars Society Project"
+          title="A Pressure-Self-Energizing Structural Interface for Modular Martian Habitats"
           role="COMPUTATIONAL & ENGINEERING LEAD"
         >
-          Start description here.
+          An established and experimentally quantified design envelope for modular planetary-habitat interfaces. Proposed Mars surface habitat architecture minimizes the mass and stowed volume transported from Earth while maximizing usable pressurized interior volume, passive thermal performance, and remaining rapidly deployable and reconfigurable for different surface functions.
         </ResearchCard>
       </div>
 

@@ -1,28 +1,60 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './App.css'
 
 const projects = [
   {
-    title: 'Distracted Drivers Detection System',
-    kind: 'Machine Learning',
-    tags: ['React', 'TypeScript', 'Python', 'FastAPI', 'PostgreSQL', 'D3.js'],
-    art: 'analytics',
-  },
-  {
     title: 'Phoenix',
-    kind: 'App Development',
+    kind: 'A cross-platform app built to allow safe preparation, handling, and recovery during all stages of a wildfire. The app uses machine learning to predict fire spread and provide real-time updates to users. Presents a unified platform to organize evacuation plans, track fire locations, and access emergency resources.',
     tags: ['PyTorch', 'TensorFlow', 'NumPy', 'CUDA', 'OpenCV'],
     art: 'network',
+    cover: `${import.meta.env.BASE_URL}phoenix-cover.png`,
+    href: 'https://vimeo.com/1240535601',
   },
   {
-    title: 'EcoTrain AI',
+    title: 'Search and Rescue VTOL',
+    kind: 'An autonomous fixed wing designed for search and rescue operations. The aircraft is capable of vertical takeoff and landing, as well as efficient forward flight. It is equipped with a high-resolution camera and thermal imaging sensors to locate missing persons in challenging environments.',
+    tags: ['VTOL', 'Search & Rescue'],
+    art: 'analytics',
+    cover: `${import.meta.env.BASE_URL}search-rescue-vtol-cover.png`,
+    coverFit: 'crop',
+    href: '#contact',
+  },
+  {
+    title: 'Ladybug',
+    kind: 'A completely autonomous quadcopter built from scratch for SUAS 2026. Features custom lithium ion battery packs, TMOTOR MN7005 230 KV anti-gravity motors, a Pixhawk 6x flight controller, a robust carbon fiber frame, and 24*7.2 inch propellers. View additional technical information and documentation at https://amadoruavs.com/ladybug.',
+    tags: [],
+    art: 'code',
+    cover: `${import.meta.env.BASE_URL}ladybug-cover-card.png`,
+    coverFit: 'crop',
+    coverBrightness: true,
+    href: 'https://youtu.be/O-y4a6SeSLk',
+  },
+  {
+    title: 'Distracted Drivers Detection System',
+    kind: 'Utilized transfer learning with the VGG19 framework and custom CNNs to process live video feed and flag inattentive drivers and unsafe behaviors. Achieved an accuracy of 93% from limited data sources through data augmentation and implemented saliency maps to only analyze useful pixels, such as those describing the hands and eyes, preserving user privacy',
+    tags: ['React', 'TypeScript', 'Python', 'FastAPI', 'PostgreSQL', 'D3.js'],
+    art: 'analytics',
+    href: '#contact', // Replace with this project's demo, source code, or presentation URL.
+  },
+  {
+    title: 'EcoTrain',
     kind: 'Full Stack',
     tags: ['Next.js', 'WebSockets', 'MongoDB', 'Redis', 'Docker'],
     art: 'code',
+    href: '#contact', // Replace with this project's demo, source code, or presentation URL.
   },
 ]
 
 const jobs = [
+  {
+    title: 'Electrical Design Lead',
+    company: 'AmadorUAVs',
+    date: 'Aug 2025',
+    end: 'Present',
+    place: 'Pleasanton, CA',
+    description:
+      'Electrical Lead of an engineering team that designs fully autonomous drones to compete at the annual Student Unmanned Aerial Systems (SUAS) competition, an international collegiate competition with over 75 college teams. We have previously placed 1st nationally and 2nd internationally, outranking teams from Cornell, UC Berkely, and UC San Diego.',
+  },
   {
     title: 'VP of Finance',
     company: 'AV Technology Student Assoc.',
@@ -42,18 +74,18 @@ const jobs = [
       'Built scalable web applications using React and Node.js, optimized database queries, and mentored junior developers on best practices.',
   },
   {
-    title: 'Electrical Design Lead',
-    company: 'AmadorUAVs',
-    date: 'Aug 2025',
+    title: 'Flagship Project Member',
+    company: 'Tri-Valley Mars Society',
+    date: 'Aug 2026',
     end: 'Present',
     place: 'Pleasanton, CA',
     description:
-      'Contributed to core product features, fixed critical bugs, and improved application performance by 40% through code optimization.',
+      'Developed machine learning models for natural language processing, conducted research on transformer architectures, and published findings in peer-reviewed journals.',
   },
 ]
 
 const awards = [
-  {
+ {
     title: 'Robotics Pre-Apprenticeship',
     description:
       'Recipient of the State of California (DAS) Robotics Pre-Apprenticeship',
@@ -72,6 +104,13 @@ const awards = [
     description:
       'Placed 1st at States conference and qualified for Nationals',
     organization: 'Technology Student Assoc.',
+    year: '2026',
+  },
+  {
+    title: 'AP Scholar',
+    description:
+      'Demonstrated outstanding college-level achievement through performance on multiple AP Exams.',
+    organization: 'CollegeBoard',
     year: '2026',
   },
   {
@@ -112,7 +151,7 @@ function Icon({ name, size = 24 }) {
     viewBox: '0 0 24 24',
     fill: 'none',
     stroke: 'currentColor',
-    strokeWidth: name === 'moon' ? 1.45 : 1.8,
+    strokeWidth: name === 'moon' ? 1.4 : 1.8,
     strokeLinecap: 'round',
     strokeLinejoin: 'round',
     'aria-hidden': true,
@@ -120,7 +159,7 @@ function Icon({ name, size = 24 }) {
 
   const icons = {
     moon: (
-      <path d="M20.9 13A9 9 0 0 1 11 3.1 9 9 0 1 0 20.9 13Z" />
+      <path d="M19.3 14.8A8.5 8.5 0 0 1 9.2 4.2 8.5 8.5 0 1 0 19.3 14.8Z" />
     ),
     sun: (
       <>
@@ -182,22 +221,32 @@ function Icon({ name, size = 24 }) {
   return <svg {...commonProps}>{icons[name] || icons.arrow}</svg>
 }
 
-function ProjectArt({ kind }) {
+function ProjectArt({ kind, cover, coverFit, coverBrightness }) {
   return (
-    <div className={`project-art art-${kind}`} aria-hidden="true">
-      <div className="art-window">
-        <div className="art-sidebar" />
-        <div className="art-content">
-          <i />
-          <i />
-          <i />
-          <i />
-          <b />
-          <b />
-          <b />
-        </div>
-      </div>
-      <span className="art-glow" />
+    <div className={`project-art ${cover ? 'art-cover' : `art-${kind}`}`} aria-hidden="true">
+      {cover ? (
+        <img
+          className={`project-cover-image${coverFit ? ` project-cover-image-${coverFit}` : ''}${coverBrightness ? ' project-cover-image-bright' : ''}`}
+          src={cover}
+          alt=""
+        />
+      ) : (
+        <>
+          <div className="art-window">
+            <div className="art-sidebar" />
+            <div className="art-content">
+              <i />
+              <i />
+              <i />
+              <i />
+              <b />
+              <b />
+              <b />
+            </div>
+          </div>
+          <span className="art-glow" />
+        </>
+      )}
     </div>
   )
 }
@@ -269,6 +318,29 @@ function HeroSection() {
     return () => window.clearTimeout(timer)
   }, [])
 
+  function moveHeroLayers(event) {
+    if (event.pointerType !== 'mouse' && event.pointerType !== 'pen') return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+    const visual = event.currentTarget
+    const bounds = visual.getBoundingClientRect()
+    const x = (event.clientX - (bounds.left + bounds.width / 2)) / (bounds.width / 2)
+    const y = (event.clientY - (bounds.top + bounds.height / 2)) / (bounds.height / 2)
+
+    visual.querySelectorAll('[data-parallax]').forEach((layer) => {
+      const depth = Number(layer.dataset.parallax)
+      layer.style.setProperty('--parallax-x', `${x * depth}px`)
+      layer.style.setProperty('--parallax-y', `${y * depth}px`)
+    })
+  }
+
+  function resetHeroLayers(event) {
+    event.currentTarget.querySelectorAll('[data-parallax]').forEach((layer) => {
+      layer.style.removeProperty('--parallax-x')
+      layer.style.removeProperty('--parallax-y')
+    })
+  }
+
   return (
     <section className="hero grid-bg" id="home">
       <div className="hero-copy">
@@ -294,11 +366,29 @@ function HeroSection() {
         </a>
       </div>
 
-      <div className="hero-visual" aria-hidden="true">
-        <div className="orbit orbit-one" />
-        <div className="orbit orbit-two" />
-        <div className="orbit orbit-three" />
-        <div className="cpu-badge">
+      <div
+        className="hero-visual"
+        aria-hidden="true"
+        onPointerMove={moveHeroLayers}
+        onPointerLeave={resetHeroLayers}
+      >
+        <div className="hero-glow" data-parallax="-5" />
+        <img
+          className="orbit orbit-one"
+          src={`${import.meta.env.BASE_URL}wavy-gear-outline.png`}
+          data-parallax="-10"
+          alt=""
+        />
+        <img
+          className="orbit orbit-two"
+          src={`${import.meta.env.BASE_URL}wavy-gear-outline.png`}
+          data-parallax="17"
+          alt=""
+        />
+        <div className="orbiting-detail-path">
+          <span className="orbiting-detail" />
+        </div>
+        <div className="cpu-badge" data-parallax="8">
           <Icon name="cpu" size={58} />
         </div>
       </div>
@@ -312,30 +402,92 @@ function HeroSection() {
 }
 
 function ProjectsSection() {
+  const projectScrollerRef = useRef(null)
+
+  function scrollProjects(direction) {
+    const scroller = projectScrollerRef.current
+    const firstCard = scroller?.querySelector('.project-card')
+
+    if (!scroller || !firstCard) return
+
+    const gap = Number.parseFloat(window.getComputedStyle(scroller).columnGap) || 0
+    scroller.scrollBy({
+      left: direction * (firstCard.getBoundingClientRect().width + gap),
+      behavior: 'smooth',
+    })
+  }
+
+  function handleProjectKeys(event) {
+    if (event.key === 'ArrowLeft') {
+      event.preventDefault()
+      scrollProjects(-1)
+    } else if (event.key === 'ArrowRight') {
+      event.preventDefault()
+      scrollProjects(1)
+    }
+  }
+
   return (
     <section className="section projects-section" id="projects">
-      <SectionHeading icon="code">Featured Projects</SectionHeading>
-      <p className="section-intro">
-        A selection of recent engineering and development work, focusing on scalable
-        <br className="desktop-break" /> solutions and innovative technologies.
-      </p>
+      <div className="projects-heading-row">
+        <SectionHeading icon="code">Featured Projects</SectionHeading>
+        <div className="project-carousel-controls">
+          <span>Scroll or use the arrows to see more.</span>
+          <div className="project-carousel-buttons">
+            <button
+              className="carousel-arrow"
+              type="button"
+              aria-label="Scroll to previous projects"
+              onClick={() => scrollProjects(-1)}
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m14 6-6 6 6 6M8 12h12" />
+              </svg>
+            </button>
+            <button
+              className="carousel-arrow"
+              type="button"
+              aria-label="Scroll to more projects"
+              onClick={() => scrollProjects(1)}
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m10 6 6 6-6 6m6-6H4" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
 
-      <div className="project-grid">
+      <div
+        className="project-grid"
+        ref={projectScrollerRef}
+        role="region"
+        aria-label="Featured project cards"
+        tabIndex={0}
+        onKeyDown={handleProjectKeys}
+      >
         {projects.map((project) => (
           <article className="project-card" key={project.title}>
-            <ProjectArt kind={project.art} />
+            <ProjectArt
+              kind={project.art}
+              cover={project.cover}
+              coverFit={project.coverFit}
+              coverBrightness={project.coverBrightness}
+            />
             <div className="project-info">
               <div className="project-title-row">
                 <h3>{project.title}</h3>
                 <a
-                  href="#contact"
+                  href={project.href}
+                  target={project.href.startsWith('http') ? '_blank' : undefined}
+                  rel={project.href.startsWith('http') ? 'noreferrer' : undefined}
                   className="round-arrow"
-                  aria-label={`Learn more about ${project.title}`}
+                  aria-label={`Open ${project.title} project link`}
                 >
                   <Icon name="arrow" size={17} />
                 </a>
               </div>
-              <p>{project.kind}</p>
+              <p>{project.description || project.kind}</p>
               <div className="tag-list">
                 {project.tags.map((tag) => (
                   <span key={tag}>{tag}</span>
@@ -352,7 +504,7 @@ function ProjectsSection() {
 function ExperienceSection() {
   return (
     <section className="section experience-section grid-bg" id="experience">
-      <SectionHeading icon="briefcase">Professional Timeline</SectionHeading>
+      <SectionHeading icon="briefcase">Experience</SectionHeading>
       <div className="timeline">
         {jobs.map((job) => (
           <article className="timeline-item" key={job.title}>
@@ -387,9 +539,6 @@ function ResearchCard({ art, title, role, children }) {
       <div className={`research-art ${art}`}>
         <span className="year-badge">2024</span>
         <h3>{title}</h3>
-        <a href="#contact" aria-label="Read research">
-          <Icon name="arrow" size={22} />
-        </a>
       </div>
       <div className="research-copy">
         <span className="eyebrow">ROLE: {role}</span>
@@ -420,19 +569,26 @@ function ResearchAndAwardsSection() {
         <SectionHeading icon="flask">Featured Research</SectionHeading>
         <ResearchCard
           art="chip-art"
-          title="Efficient Deep Learning for Edge Devices"
-          role="LEAD RESEARCHER"
+          title="Connectomes"
+          role="MODEL ARCHITECTURE LEAD"
         >
           Research on model compression techniques and quantization methods to enable
           deployment of deep learning models on resource-constrained edge devices.
         </ResearchCard>
         <ResearchCard
           art="green-art"
-          title="Sustainable AI: Carbon-Aware Computing"
-          role="CO-AUTHOR"
+          title="Analysis of Weather on Area Vulnerability to Invasive Species"
+          role="LEAD RESEARCHER"
         >
           Investigating methods to reduce the carbon footprint of AI training and
           inference through algorithmic innovations and hardware optimization.
+        </ResearchCard>
+        <ResearchCard
+          art="green-art"
+          title="Mars Society Project"
+          role="COMPUTATIONAL & ENGINEERING LEAD"
+        >
+          Start description here.
         </ResearchCard>
       </div>
 
@@ -488,6 +644,10 @@ function EducationSection() {
               <div className="metric wide">
                 <span>Standardized ACT Score</span>
                 <strong className="cyan">35</strong>
+              </div>
+              <div className="metric wide">
+                <span>PSAT Score</span>
+                <strong className="blue">1500</strong>
               </div>
             </div>
           </div>

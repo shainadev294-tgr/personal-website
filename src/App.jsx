@@ -64,7 +64,7 @@ const jobs = [
     end: 'Present',
     place: 'Pleasanton, CA',
     description:
-      'Developed machine learning models for natural language processing, conducted research on transformer architectures, and published findings in peer-reviewed journals.',
+      'Handle fundraising and promotion to raise competition fees as well as mentoring underclassman in their projects as a 2026 TSA State Champion and National Qualifier in the events of Engineering Design and Coding myself.',
   },
   {
     title: 'Project Lead',
@@ -74,7 +74,7 @@ const jobs = [
     end: 'Present',
     place: 'Pleasanton, CA',
     description:
-      'Built scalable web applications using React and Node.js, optimized database queries, and mentored junior developers on best practices.',
+      'Helped organize our annual Summit for three consecutive, an award winning and nationally recognized day-long event that brings together over 200 elementary through middle school girls from across the Bay Area to learn about computer science through workshops, guest speakers, and hands-on activities. Lead a team of 30+ students to plan and excecute a week-long hackathon for over 80 participants, and taught live workshops in python and machine learning.',
   },
   {
     title: 'Flagship Project Member',
@@ -84,7 +84,7 @@ const jobs = [
     end: 'Present',
     place: 'Pleasanton, CA',
     description:
-      'Developed machine learning models for natural language processing, conducted research on transformer architectures, and published findings in peer-reviewed journals.',
+      'Working under the guidance of Stanford Professor Dr. Kyle Douglas and former NASA engineer Mr. Kenny Vassigh to develop a Mars surface habitat optimized for usable pressurized interior volume and passive thermal performance while remaining rapidly deployable and reconfigurable for different surface functions.',
   },
 ]
 

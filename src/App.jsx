@@ -31,19 +31,20 @@ const projects = [
     href: 'https://youtu.be/O-y4a6SeSLk',
   },
   {
+    title: 'EcoTrain',
+    kind: 'A web based application that implements early stopping and quantization techniques to reduce the computational cost and energy consumption of training deep learning models. The application allows users to upload their own datasets and train models with reduced energy consumption, while still achieving high accuracy.',
+    tags: ['Next.js', 'WebSockets', 'MongoDB', 'Redis', 'Docker'],
+    art: 'code',
+    cover: `${import.meta.env.BASE_URL}ecotrain-cover.png`,
+    href: '#contact', // Replace with this project's demo, source code, or presentation URL.
+  },
+  {
     title: 'Distracted Drivers Detection System',
     kind: 'Utilized transfer learning with the VGG19 framework and custom CNNs to process live video feed and flag inattentive drivers and unsafe behaviors. Achieved an accuracy of 93% from limited data sources through data augmentation and implemented saliency maps to only analyze useful pixels, such as those describing the hands and eyes, preserving user privacy.',
     tags: ['React', 'TypeScript', 'Python', 'FastAPI', 'PostgreSQL', 'D3.js'],
     art: 'analytics',
     cover: `${import.meta.env.BASE_URL}distracted-drivers-cover.png`,
     href: 'https://docs.google.com/presentation/d/1Ujiju-2A2JLKRG2gHLWMw58_ODTBZsI_uwVaDte5w5I/edit?usp=sharing', // Replace with this project's demo, source code, or presentation URL.
-  },
-  {
-    title: 'EcoTrain',
-    kind: 'Full Stack',
-    tags: ['Next.js', 'WebSockets', 'MongoDB', 'Redis', 'Docker'],
-    art: 'code',
-    href: '#contact', // Replace with this project's demo, source code, or presentation URL.
   },
 ]
 

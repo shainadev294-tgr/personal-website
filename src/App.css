@@ -529,6 +529,11 @@
   object-position: center 85%;
 }
 
+.project-cover-image-phoenix {
+  object-fit: contain;
+  object-position: center;
+}
+
 .project-cover-image-bright {
   filter: brightness(1.18);
 }
@@ -868,6 +873,10 @@
   position: absolute;
   inset: 0;
   background: linear-gradient(0deg,#00121ee8,transparent 70%);
+}
+
+.research-art.has-cover:after {
+  display: none;
 }
 
 .chip-art {
@@ -1466,6 +1475,10 @@
 
   .project-art {
     height: 230px;
+  }
+
+  .project-cover-image-phoenix {
+    object-fit: contain;
   }
 
   .project-info>p {

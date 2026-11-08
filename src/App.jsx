@@ -8,6 +8,7 @@ const projects = [
     tags: ['PyTorch', 'TensorFlow', 'NumPy', 'CUDA', 'OpenCV'],
     art: 'network',
     cover: `${import.meta.env.BASE_URL}phoenix-cover.png`,
+    coverFit: 'phoenix',
     href: 'https://vimeo.com/1240535601',
   },
   {
@@ -31,10 +32,11 @@ const projects = [
   },
   {
     title: 'Distracted Drivers Detection System',
-    kind: 'Utilized transfer learning with the VGG19 framework and custom CNNs to process live video feed and flag inattentive drivers and unsafe behaviors. Achieved an accuracy of 93% from limited data sources through data augmentation and implemented saliency maps to only analyze useful pixels, such as those describing the hands and eyes, preserving user privacy',
+    kind: 'Utilized transfer learning with the VGG19 framework and custom CNNs to process live video feed and flag inattentive drivers and unsafe behaviors. Achieved an accuracy of 93% from limited data sources through data augmentation and implemented saliency maps to only analyze useful pixels, such as those describing the hands and eyes, preserving user privacy.',
     tags: ['React', 'TypeScript', 'Python', 'FastAPI', 'PostgreSQL', 'D3.js'],
     art: 'analytics',
-    href: '#contact', // Replace with this project's demo, source code, or presentation URL.
+    cover: `${import.meta.env.BASE_URL}distracted-drivers-cover.png`,
+    href: 'https://docs.google.com/presentation/d/1Ujiju-2A2JLKRG2gHLWMw58_ODTBZsI_uwVaDte5w5I/edit?usp=sharing', // Replace with this project's demo, source code, or presentation URL.
   },
   {
     title: 'EcoTrain',
@@ -492,11 +494,13 @@ function ProjectsSection() {
                 </a>
               </div>
               <p>{project.description || project.kind}</p>
+              {/* Uncomment this block to show project tools and languages again.
               <div className="tag-list">
                 {project.tags.map((tag) => (
                   <span key={tag}>{tag}</span>
                 ))}
               </div>
+              */}
             </div>
           </article>
         ))}
@@ -542,10 +546,21 @@ function ExperienceSection() {
   )
 }
 
-function ResearchCard({ art, title, role, children }) {
+function ResearchCard({ art, cover, coverPosition, coverSize, title, role, children }) {
   return (
     <article className="research-card">
-      <div className={`research-art ${art}`}>
+      <div
+        className={`research-art ${art}${cover ? ' has-cover' : ''}`}
+        style={
+          cover
+            ? {
+                backgroundImage: `url(${cover})`,
+                backgroundPosition: coverPosition || 'center center',
+                backgroundSize: coverSize || 'cover',
+              }
+            : undefined
+        }
+      >
         <h3>{title}</h3>
       </div>
       <div className="research-copy">
@@ -577,6 +592,9 @@ function ResearchAndAwardsSection() {
         <SectionHeading icon="flask">Featured Research</SectionHeading>
         <ResearchCard
           art="chip-art"
+          cover={`${import.meta.env.BASE_URL}mars-research-cover.png`}
+          coverPosition="center 35%"
+          coverSize="110% auto"
           title="Why Message Passing Fails on Functional Connectomes: A Mechanistic Study of Node-Feature Redundancy"
           role="MODEL ARCHITECTURE LEAD"
         >
@@ -584,6 +602,7 @@ function ResearchAndAwardsSection() {
         </ResearchCard>
         <ResearchCard
           art="green-art"
+          cover={`${import.meta.env.BASE_URL}invasive-species-research-cover.png`}
           title="Analysis of Weather on Area Vulnerability to Invasive Species"
           role="LEAD RESEARCHER"
         >
@@ -591,6 +610,8 @@ function ResearchAndAwardsSection() {
         </ResearchCard>
         <ResearchCard
           art="green-art"
+          cover={`${import.meta.env.BASE_URL}connectomes-research-cover.png`}
+          coverSize="90% auto"
           title="A Pressure-Self-Energizing Structural Interface for Modular Martian Habitats"
           role="COMPUTATIONAL & ENGINEERING LEAD"
         >
@@ -639,6 +660,7 @@ function EducationSection() {
           <div>
             <span className="eyebrow muted">CORE METRICS</span>
             <div className="metrics">
+              {/* Uncomment these metric blocks to show GPA again.
               <div className="metric">
                 <span>Weighted GPA</span>
                 <strong className="blue">4.48</strong>
@@ -647,6 +669,7 @@ function EducationSection() {
                 <span>Unweighted GPA</span>
                 <strong>3.98</strong>
               </div>
+              */}
               <div className="metric wide">
                 <span>Standardized ACT Score</span>
                 <strong className="cyan">35</strong>
